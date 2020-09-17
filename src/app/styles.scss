@@ -1,0 +1,53 @@
+@import '~react-perfect-scrollbar/dist/css/styles.min.css';
+
+/* Misc */
+
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Common styles */
+
+main {
+  display: block;
+}
+
+.full-width-panel {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.full-height-panel {
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
+}
+
+/* Perfect scrollbar */
+
+.scrollbar-container.ps {
+  > .ps__rail-x,
+  > .ps__rail-y {
+    z-index: 15;
+    opacity: 0.6;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+      background-color: rgba(238, 238, 238, 0.2);
+      opacity: 0.9;
+    }
+
+    > div {
+      background-color: #aaa;
+    }
+  }
+}
