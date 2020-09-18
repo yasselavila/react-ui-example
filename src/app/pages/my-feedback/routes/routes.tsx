@@ -1,15 +1,21 @@
-import React, { ReactElement } from 'react';
+import React, { lazy, ReactElement, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import UserFeedback from '../pages/user-feedback/user-feedback';
+import { LoadingIndicator } from '../../../core/components/loading-indicator/loading-indicator';
+
+const Feedback = lazy(() => import('../pages/feedback/feedback'));
+const UserFeedback = lazy(() => import('../pages/user-feedback/user-feedback'));
 
 export function MyFeedbackRoutes(): ReactElement {
   return (
-    <Switch>
-      <Route path="/my-feedback/:userId" component={UserFeedback} />
+    <Suspense fallback={<LoadingIndicator />}>
+      <Switch>
+        <Route path="/my-feedback/:userId" component={UserFeedback} />
+        <Route path="/my-feedback" component={Feedback} />
 
-      <Route path="**">
-        <Redirect to="/404" />
-      </Route>
-    </Switch>
+        <Route path="**">
+          <Redirect to="/my-feedback" />
+        </Route>
+      </Switch>
+    </Suspense>
   );
 }
