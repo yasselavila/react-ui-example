@@ -1,12 +1,12 @@
-import { Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import React, { ReactElement, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ContentWrapper } from '../../core/components/content-wrapper/content-wrapper';
 
 const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
-  loginButton: {
+  button: {
     textTransform: 'none',
     fontSize: 16,
     fontWeight: 'normal',
@@ -41,7 +41,7 @@ export default function NotFound(): ReactElement {
         variant="contained"
         size="large"
         color="primary"
-        className={classes.loginButton}
+        className={classes.button}
         onClick={handleClick}
       >
         Back to Share Feedback
