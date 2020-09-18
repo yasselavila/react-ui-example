@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from 'react';
 // XXX: This should be specified in a environment variable
 const apiBaseUrl = 'https://frontend-exercise-api.netlify.app/.netlify/functions/server';
 
+const cache: Record<string, unknown> = {};
+
 export interface ApiRequestManagement<T> {
   loading: boolean;
   error: any | null;
@@ -26,12 +28,19 @@ export function useApiRequest<T>(endpoint: string): ApiRequestManagement<T> {
 
   useEffect(
     () => {
-      setState({ ...state, loading: true });
+      if (endpoint in cache) {
+        setState({ loading: false, error: null, data: cache[endpoint] as T });
+      } else {
+        setState({ ...state, loading: true });
 
-      fetch(`${apiBaseUrl}${endpoint}`)
-        .then((res) => res.json())
-        .then((data) => setState({ loading: false, error: null, data }))
-        .catch((error) => setState({ ...state, error }));
+        fetch(`${apiBaseUrl}${endpoint}`)
+          .then((res) => res.json())
+          .then((data) => {
+            cache[endpoint] = data;
+            setState({ loading: false, error: null, data });
+          })
+          .catch((error) => setState({ ...state, error }));
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [endpoint, attempts]
