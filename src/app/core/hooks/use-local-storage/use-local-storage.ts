@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 export interface LocalStorageManager<T> {
   setValue: (value: T) => void;
-  getValue: () => T | null;
+  getValue: () => T;
 }
 
 export function useLocalStorage<T>(key: string, defaultValue?: T): LocalStorageManager<T> {
