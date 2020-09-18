@@ -5,7 +5,7 @@ import { DataProjector } from '../../../../core/components/data-projector/data-p
 import { UserList, UserListItem } from '../../../../core/components/user-list';
 import { useApiQuestions } from '../../../../core/hooks/use-api-questions/use-api-questions';
 import { useApiUsers } from '../../../../core/hooks/use-api-users/use-api-users';
-import { UserAction } from '../../components/user-action/user-action';
+import { UserAction } from './components/user-action/user-action';
 
 export default function UsersList(): ReactElement {
   const users = useApiUsers();

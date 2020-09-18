@@ -3,7 +3,7 @@
 import UsersList from './users-list';
 
 // TODO
-describe('Users List', () => {
+describe('Share Feeedback / Users List', () => {
   it('should be defined', () => {
     expect(UsersList).toBeTruthy();
   });
