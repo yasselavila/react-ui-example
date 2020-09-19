@@ -26,11 +26,7 @@ export default function UsersList(): ReactElement {
         {users.data && questions.data && (
           <UserList>
             {users.data?.map((user) => (
-              <UserListItem
-                key={user.id}
-                user={user}
-                actions={<UserAction user={user} questions={questions.data as any} />}
-              />
+              <UserListItem key={user.id} user={user} actions={<UserAction user={user} />} />
             ))}
           </UserList>
         )}
