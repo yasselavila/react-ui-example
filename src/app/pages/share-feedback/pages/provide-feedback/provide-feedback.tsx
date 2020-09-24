@@ -29,9 +29,14 @@ export default function ProvideFeedback(): ReactElement {
   const { userId } = useParams<{ userId: string }>();
   const { pendingQuestion, saveQuestion, user, loading, error, refetch } = useUserQuestions(userId);
 
-  const [state, setState] = useState(null);
+  const [state, setState] = useState<string | number | null>(null);
+
   const onChange = useCallback((value) => setState(value), [setState]);
-  const save = useCallback(() => saveQuestion(state as any), [saveQuestion, state]);
+
+  const save = useCallback(() => {
+    saveQuestion(state as never);
+    setState(null);
+  }, [saveQuestion, state]);
 
   return (
     <ContentWrapper

@@ -23,7 +23,7 @@ export interface TextQuestionProps {
 export function TextQuestion({ onChange }: TextQuestionProps): ReactElement {
   const classes = useStyles();
 
-  const handleChange = useCallback((e) => onChange?.(e.target.value), [onChange]);
+  const handleChange = useCallback((e) => onChange?.(e.target.value.trim() || null), [onChange]);
 
   return (
     <div className={classes.root}>
