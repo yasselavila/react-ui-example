@@ -1,5 +1,5 @@
-import fetch from 'cross-fetch';
 import { useCallback, useEffect, useState } from 'react';
+import { fetch } from './fetch';
 
 // XXX: This should be specified in a environment variable
 const apiBaseUrl = 'https://frontend-exercise-api.netlify.app/.netlify/functions/server';
