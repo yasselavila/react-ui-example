@@ -2,11 +2,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
-import clsx from 'clsx';
 import React, { ReactElement } from 'react';
-import { useMedia } from '../../hooks/use-media/use-media';
 import { CopyrightNotice } from '../copyright-notice/copyright-notice';
-import { TheoremLogo } from '../theorem-logo/theorem-logo';
 
 const useStyles = makeStyles({
   footerAppBar: {
@@ -18,40 +15,22 @@ const useStyles = makeStyles({
   toolbar: {
     minHeight: 54
   },
-  grow: {
-    flexGrow: 1
-  },
-  textColor: {
+  cr: {
     color: '#fff',
-    fontSize: 12
-  },
-  link: {
-    fontWeight: 'bold'
+    fontSize: 12,
+    width: '100%',
+    textAlign: 'center'
   }
 });
 
 export function Footer(): ReactElement {
   const classes = useStyles();
 
-  /* IMPORTANT!: I'm using this instead of Hidden to avoid having to overwrite all the CSS from MUI */
-  const isSmall = useMedia('(max-width: 960px)');
-
   return (
     <AppBar position="fixed" component="footer" className={classes.footerAppBar}>
       <Container maxWidth="lg">
         <Toolbar disableGutters classes={{ regular: classes.toolbar }}>
-          <TheoremLogo />
-
-          {!isSmall && (
-            <>
-              <div className={classes.grow} />
-
-              <CopyrightNotice
-                className={classes.textColor}
-                linkClassName={clsx(classes.textColor, classes.link)}
-              />
-            </>
-          )}
+          <CopyrightNotice className={classes.cr} />
         </Toolbar>
       </Container>
     </AppBar>

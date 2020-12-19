@@ -32,6 +32,10 @@ export function AppRoutes(): ReactElement {
         <Route path="/my-feedback" component={MyFeedback} />
         <Route path="/404" component={NotFound} />
 
+        <Route path="/" exact>
+          <Redirect to="/share-feedback" />
+        </Route>
+
         <Route path="**">
           <Redirect to="/404" />
         </Route>
