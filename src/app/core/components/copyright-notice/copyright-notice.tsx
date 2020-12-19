@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement, useMemo } from 'react';
-import { TheoremWebsiteLink } from '../theorem-website-link/theorem-website-link';
 
 const useStyles = makeStyles({
   abbr: {
@@ -10,10 +9,9 @@ const useStyles = makeStyles({
 
 export interface CopyrightNoticeProps {
   className?: string;
-  linkClassName?: string;
 }
 
-export function CopyrightNotice({ className, linkClassName }: CopyrightNoticeProps): ReactElement {
+export function CopyrightNotice({ className }: CopyrightNoticeProps): ReactElement {
   const classes = useStyles();
 
   const yearInfo = useMemo(() => {
@@ -28,9 +26,7 @@ export function CopyrightNotice({ className, linkClassName }: CopyrightNoticePro
         &#169;
       </abbr>
       {yearInfo}
-      {' '}
-      <TheoremWebsiteLink className={linkClassName} />
-      {', LLC. All Rrights Reserved.'}
+      {'. All Rights Reserved.'}
     </p>
   );
 }
